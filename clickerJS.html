@@ -1,0 +1,63 @@
+<!-- 
+Clicker Game. Uses JavaScript.
+Author: Steven Enriquez
+-->
+
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+
+		<title>Clicker Game</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="icon" type="image/png" href="pillbug.png"/>
+	
+	</head>
+	
+	<body>
+
+		<img src="pillbug.png" id="click" alt="Pill Bug" onclick="clicker()">
+
+		<h1 id="points"> Click on that thing </h1>
+
+		<script>
+			var points = 0;
+			var counter = 0;
+			var colorCounter = 0;
+			var fontColors = [ "#ff0000", "#0affe6", "#f2ff09", "#3eff38", "#f900e0" ];
+			var bodyColors = [ "#1dff00", "#ffff00", "#00ffdd", "#ff00aa", "#1d00ff" ];
+
+			function clicker()
+			{
+				points++;
+				document.getElementById("points").innerHTML = "Points " + points;
+
+				id = document.getElementById('points');
+				// styleFont will be used to change the font size on each click
+				var styleFont = window.getComputedStyle(id, null).getPropertyValue('font-size');
+				currentSize = parseFloat(styleFont);
+				if(counter < 50) // true while points (counter) < 50
+				{
+					counter++;
+					// increase font size by 1px on each click
+					id.style.fontSize = (currentSize + 1) + 'px';
+				}
+				if(counter >= 50 && counter <= 100)
+				{
+					// color strobing (color changes on each click)
+					document.getElementById('points').style.color = fontColors[colorCounter];
+					document.body.style.backgroundColor = bodyColors[colorCounter];
+					colorCounter++;
+					// reset to beginning of fontColors array
+					if(colorCounter == fontColors.length)
+					{
+						colorCounter = 0;
+					}
+				}
+			}
+		</script>
+	
+	</body>
+
+</html>

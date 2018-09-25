@@ -1,0 +1,18 @@
+body, html {
+	cursor: url('bob.cur'), auto;
+}
+
+h1 {
+	text-align: center;
+	color: grey;
+}
+
+img {
+	position: absolute;
+	top: 50%;
+	left: 48%;
+	height: 250px;
+	width: 400px;
+	margin-top: -125px; /* Half the height */
+	margin-left: -200px; /* Half the width */
+}

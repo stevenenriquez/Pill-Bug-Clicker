@@ -1,0 +1,54 @@
+<!-- 
+Clicker Game. Uses jQuery.
+Author: Steven Enriquez
+-->
+
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+
+		<title>Clicker Game</title>
+		<script src="http://code.jquery.com/jquery-3.2.1.js"></script>  <!-- jQuery -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="icon" type="image/png" href="pillbug.png"/>
+	
+	</head>
+	
+	<body>
+
+		<img src="pillbug.png" id="click" alt="Pill Bug" />
+
+		<h1 id="points"> Click on that thing </h1>
+
+		<script type="text/javascript">
+			var points = 0
+			var counter = 0
+			var colors = [ "blue", "cyan", "purple", "red" ]
+
+			// Click Function
+			$('#click').on('mousedown', function()
+			{
+				points++;
+				$('#points').html('Points: ' + points)
+
+				var fontSize = parseInt($('body').css('font-size'))
+				
+				if(fontSize <= 65)			// This will be true until points == 50
+				{
+					fontSize = fontSize + 1 + 'px'
+					$('body').css({'font-size':fontSize})
+				}
+				
+				if(fontSize > 65)			// Start color strobing, this will be true once points == 50
+				{
+					$('#points').append($('#points').val() + '<br /><br /><br /> KEEP GOINGGG')
+    				$('#points').css({'color': colors[(counter++)%colors.length]})
+				}
+			})
+		</script>
+	
+	</body>
+
+</html>
